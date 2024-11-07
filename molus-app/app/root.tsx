@@ -9,6 +9,8 @@ import type { LinksFunction } from "@remix-run/node";
 
 import "./tailwind.css";
 import { Button } from "./components/ui/button";
+import { CopilotSidebar } from "./components/copilot-sidebar";
+import { SidebarProvider, SidebarTrigger } from "./components/ui/sidebar";
 
 export const links: LinksFunction = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
@@ -42,5 +44,13 @@ export function Layout({ children }: { children: React.ReactNode }) {
 }
 
 export default function App() {
-  return <Button>Hello</Button>;
+  return (
+    <SidebarProvider>
+      <CopilotSidebar />
+      <main className="w-full h-full">
+        <SidebarTrigger />
+        <Outlet />
+      </main>
+    </SidebarProvider>
+  );
 }
