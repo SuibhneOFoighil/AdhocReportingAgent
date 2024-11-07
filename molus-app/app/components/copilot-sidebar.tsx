@@ -9,7 +9,7 @@ import {
   
 export function CopilotSidebar() {
     return (
-      <Sidebar variant="floating" collapsible="offcanvas">
+      <Sidebar collapsible="offcanvas">
         <SidebarHeader />
         <SidebarContent>
           <SidebarGroup />
