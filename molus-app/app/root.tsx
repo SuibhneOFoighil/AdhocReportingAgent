@@ -40,6 +40,9 @@ export function Layout({ children }: { children: React.ReactNode }) {
   );
 }
 
+
 export default function App() {
-  return <div>Hello World</div>;
+  return <Outlet/>
 }
+
+
