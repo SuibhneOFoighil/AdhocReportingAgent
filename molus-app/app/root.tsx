@@ -40,6 +40,65 @@ export function Layout({ children }: { children: React.ReactNode }) {
   );
 }
 
+import { CopilotSidebar } from "./components/copilot-sidebar";
+import { SidebarProvider, SidebarTrigger } from "./components/ui/sidebar";
+import { Panel, PanelGroup, PanelResizeHandle } from "react-resizable-panels";
+
 export default function App() {
-  return <div>Hello World</div>;
+  return (
+    <SidebarProvider>      
+      <CopilotSidebar />
+      <main className="w-full h-screen flex flex-col">
+        <SidebarTrigger />
+        <div className="flex-1 p-2">
+          <Dashboard />
+        </div>
+      </main>
+    </SidebarProvider>
+  );
 }
+
+import { Card, CardContent, CardHeader, CardTitle } from "./components/ui/card";
+
+const Dashboard = () => {
+  return (
+    <div className="w-full h-full">
+      <PanelGroup direction="vertical" className="h-full">
+        <Panel>
+          <PanelGroup direction="horizontal" className="h-full gap-0">
+            <Panel>
+              <Card className="h-full">
+                <CardHeader>
+                  <CardTitle>Dashboard</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p>Welcome to the dashboard</p>
+                </CardContent>
+              </Card>
+            </Panel>
+            
+            <PanelResizeHandle className="w-2 rounded-sm bg-transparent hover:bg-primary/50 transition-colors" />
+            
+            <Panel>
+              <Card className="h-full">
+                <CardHeader>
+                  <CardTitle>Dashboard</CardTitle>
+                </CardHeader>
+              </Card>
+            </Panel>
+          </PanelGroup>
+        </Panel>
+
+        <PanelResizeHandle className="h-2 rounded-sm bg-transparent hover:bg-primary/50 transition-colors" />
+
+        <Panel>
+          <Card className="h-full">
+            <CardHeader>
+              <CardTitle>Dashboard</CardTitle>
+            </CardHeader>
+          </Card>
+        </Panel>
+      </PanelGroup>
+    </div>
+  );
+};
